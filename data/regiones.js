@@ -1,0 +1,18 @@
+export const regiones = [
+    {key: "AP", value: "Región de Arica y Parinacota"},
+    {key: "TA", value: "Región de Tarapacá"},
+    {key: "AN", value: "Región de Antofagasta"},
+    {key: "AT", value: "Región de Atacama"},
+    {key: "CO", value: "Región de Coquimbo"},
+    {key: "VA", value: "Región de Valparaíso"},
+    {key: "RM", value: "Región Metropolitana de Santiago"},
+    {key: "LI", value: "Región del Libertador Gral. Bernardo O'Higgins"},
+    {key: "ML", value: "Región del Maule"},
+    {key: "NB", value: "Región de Ñuble"},
+    {key: "BI", value: "Región del Biobío"},
+    {key: "AR", value: "Región de la Araucanía"},
+    {key: "LR", value: "Región de Los Ríos"},
+    {key: "LL", value: "Región de Los Lagos"},
+    {key: "AI", value: "Región de Aysén del Gral. Carlos Ibáñez del Campo"},
+    {key: "MA", value: "Región de Magallanes y de la Antártica Chilena"},
+];
