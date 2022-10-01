@@ -48,13 +48,25 @@ const FiltroManual4 = () => {
                     <Text style={[styles.title, {marginBottom:15}]}>Tendencia de raza</Text>
                 </View>
                 <View style={[styles.mid, {zIndex: 4}]}>
-                    <Text style={[styles.title, {marginBottom:15}]}>Región en que se perdió</Text>
+                    {
+                        state.getTipoBusqueda() === "Mascota" ?
+                        <Text style={[styles.title, {marginBottom:15}]}>Región en que se perdió</Text> :
+                        <Text style={[styles.title, {marginBottom:15}]}>Región en que se encontró</Text>
+                    }
                 </View>
                 <View style={[styles.mid, {zIndex: 3}]}>
-                    <Text style={[styles.title, {marginBottom:15}]}>Comuna en que se perdió</Text>
+                    {
+                        state.getTipoBusqueda() === "Mascota" ?
+                        <Text style={[styles.title, {marginBottom:15}]}>Comuna en que se perdió</Text> :
+                        <Text style={[styles.title, {marginBottom:15}]}>Comuna en que se encontró</Text>
+                    }
                 </View>
                 <View style={[styles.mid, {zIndex: 2}]}>
-                    <Text style={[styles.title, {marginBottom:15}]}>Fecha de desaparición</Text>
+                    {
+                        state.getTipoBusqueda() === "Mascota" ?
+                        <Text style={[styles.title, {marginBottom:15}]}>Fecha de desaparición</Text> :
+                        <Text style={[styles.title, {marginBottom:15}]}>Fecha de encuentro</Text>
+                    }
                     <View style={{minWidth:"100%", alignItems:'center'}}>
                     <Button title='Seleccionar' onPress={() => setShow(true)} />
                     {
