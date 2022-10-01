@@ -1,4 +1,6 @@
 export const razasGato = [
+    {key: '0', value: 'No lo sé'},
+    {key: 'Mixto', value: 'Mestizo'},
     {key: 'Abyssinian', value: 'Abisinio'},
     {key: 'Bengal', value: 'Bengalí'},
     {key: 'Birman', value: 'Birmano'},
@@ -10,6 +12,5 @@ export const razasGato = [
     {key: 'Ragdoll', value: 'Ragdoll'},
     {key: 'Russian_Blue', value: 'Azul ruso'},
     {key: 'Siamese', value: 'Siamés'},
-    {key: 'Sphynx', value: 'Esfinge'},
-    {key: 'Mixto', value: 'Mestizo'}
+    {key: 'Sphynx', value: 'Esfinge'}
 ];
