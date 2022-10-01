@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View, StatusBar, ImageBackground, Pressable, Button, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 // fondo
@@ -45,20 +46,74 @@ const FiltroManual4 = () => {
             />
             <ImageBackground source={image} resizeMode="stretch" imageStyle={styles.image} style={{flex:1}}>
                 <View style={[styles.top, {zIndex: 6}]}>
-                    <Text style={[styles.title, {marginBottom:15}]}>Tendencia de raza</Text>
+                    <Text style={[styles.title]}>Tendencia de raza</Text>
+                    <Dropdown
+                        style={styles.dropdown}
+                        placeholderStyle={styles.placeholderStyle}
+                        selectedTextStyle={styles.selectedTextStyle}
+                        inputSearchStyle={styles.inputSearchStyle}
+                        data={data}
+                        search
+                        maxHeight={300}
+                        labelField="label"
+                        valueField="value"
+                        placeholder='Seleccione una raza'
+                        searchPlaceholder="Escriba una raza"
+                        value={state.getRaza()}
+                        onChange={item => {
+                            state.setRaza(item.value);
+                        }}
+                    />
                 </View>
                 <View style={[styles.mid, {zIndex: 4}]}>
                     {
                         state.getTipoBusqueda() === "Mascota" ?
-                        <Text style={[styles.title, {marginBottom:15}]}>Región en que se perdió</Text> :
-                        <Text style={[styles.title, {marginBottom:15}]}>Región en que se encontró</Text>
+                        <Text style={[styles.title]}>Región en que se perdió</Text> :
+                        <Text style={[styles.title]}>Región en que se encontró</Text>
                     }
+                    <Dropdown
+                        style={styles.dropdown}
+                        placeholderStyle={styles.placeholderStyle}
+                        selectedTextStyle={styles.selectedTextStyle}
+                        inputSearchStyle={styles.inputSearchStyle}
+                        data={regiones}
+                        search
+                        maxHeight={300}
+                        labelField="label"
+                        valueField="value"
+                        placeholder="Seleccione una región"
+                        searchPlaceholder="Escriba una región"
+                        value={state.getRegion()}
+                        onChange={item => {
+                        state.setRegion(item.value);
+                        }}
+                    />
                 </View>
                 <View style={[styles.mid, {zIndex: 3}]}>
                     {
                         state.getTipoBusqueda() === "Mascota" ?
-                        <Text style={[styles.title, {marginBottom:15}]}>Comuna en que se perdió</Text> :
-                        <Text style={[styles.title, {marginBottom:15}]}>Comuna en que se encontró</Text>
+                        <Text style={[styles.title]}>Comuna en que se perdió</Text> :
+                        <Text style={[styles.title]}>Comuna en que se encontró</Text>
+                    }
+                    { state.getRegion() ?
+                        <Dropdown
+                            style={styles.dropdown}
+                            placeholderStyle={styles.placeholderStyle}
+                            selectedTextStyle={styles.selectedTextStyle}
+                            inputSearchStyle={styles.inputSearchStyle}
+                            data={comunas[state.getRegion()]}
+                            search
+                            maxHeight={300}
+                            labelField="label"
+                            valueField="value"
+                            placeholder="Seleccione una comuna"
+                            searchPlaceholder="Escriba una comuna"
+                            value={state.getComuna()}
+                            onChange={item => {
+                            state.setComuna(item.value);
+                            }}
+                        />
+                        : undefined
                     }
                 </View>
                 <View style={[styles.mid, {zIndex: 2}]}>
@@ -119,14 +174,6 @@ const styles = StyleSheet.create({
         paddingLeft: '9%',
         paddingRight: '9%',
     },
-    selectInput: {
-        width: '100%',
-        paddingRight: '4%',
-    },
-    result: {
-        paddingLeft: '4%',
-        paddingRight: '4%',
-    },
     button: {
         width: '40%',
         minHeight: 40,
@@ -173,11 +220,31 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation:5,
     },
-    dropdownStyles: {
-        backgroundColor: "#ffffff",
-        borderRadius:9,
-        borderColor: "#D8D8D8",
-    }
+    dropdown: {
+        margin: 16,
+        height: 50,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 12,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        elevation: 2,
+    },
+    placeholderStyle: {
+        fontSize: 16,
+    },
+    selectedTextStyle: {
+        fontSize: 16,
+    },
+    inputSearchStyle: {
+        height: 40,
+        fontSize: 16,
+    },
 });
 
 export default FiltroManual4;
