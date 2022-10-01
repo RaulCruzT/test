@@ -21,7 +21,7 @@ import { Entypo } from '@expo/vector-icons';
 
 const FiltroManualStackNavigator = createNativeStackNavigator();
 
-function MyStack() {
+function FiltroManualStack() {
     return(
         <FiltroManualStackNavigator.Navigator
             initialRouteName="Filtro Manual 1"
@@ -62,6 +62,75 @@ function MyStack() {
     );
 }
 
+const FiltroAutomatizadoStackNavigator = createNativeStackNavigator();
+
+function FiltroAutomatizadoStack() {
+    return(
+        <FiltroAutomatizadoStackNavigator.Navigator
+            initialRouteName="Filtro Automatizado 1"
+            screenOptions={{
+                headerTitleStyle: styles.headerTitleStyle,
+                headerStyle: {
+                    backgroundColor: "#F3845C",
+                    
+                }
+            }}
+        >
+            <FiltroAutomatizadoStackNavigator.Screen
+                name="Filtro Automatizado 1"
+                options={{ title: 'Filtro Automatizado' }}
+                component={FiltroAutomatizado1}
+            />
+        </FiltroAutomatizadoStackNavigator.Navigator>
+    );
+}
+
+const PublicarStackNavigator = createNativeStackNavigator();
+
+function PublicarStack() {
+    return(
+        <PublicarStackNavigator.Navigator
+            initialRouteName="Publicar 1"
+            screenOptions={{
+                headerTitleStyle: styles.headerTitleStyle,
+                headerStyle: {
+                    backgroundColor: "#F3845C",
+                    
+                }
+            }}
+        >
+            <PublicarStackNavigator.Screen
+                name="Publicar 1"
+                options={{ title: 'Publicar' }}
+                component={Publicar1}
+            />
+        </PublicarStackNavigator.Navigator>
+    );
+}
+
+const UsuarioStackNavigator = createNativeStackNavigator();
+
+function UsuarioStack() {
+    return(
+        <UsuarioStackNavigator.Navigator
+            initialRouteName="Usuario 1"
+            screenOptions={{
+                headerTitleStyle: styles.headerTitleStyle,
+                headerStyle: {
+                    backgroundColor: "#F3845C",
+                    
+                }
+            }}
+        >
+            <UsuarioStackNavigator.Screen
+                name="Usuario 1"
+                options={{ title: 'Usuario' }}
+                component={Usuario1}
+            />
+        </UsuarioStackNavigator.Navigator>
+    );
+}
+
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -84,7 +153,7 @@ function MyTabs() {
             >
                 <Tab.Screen
                     name="Filtro Manual"
-                    component={MyStack}
+                    component={FiltroManualStack}
                     options = {{
                         tabBarIcon: ({color,size}) => (
                             <Feather name="filter" size={30} color={color} />
@@ -93,7 +162,7 @@ function MyTabs() {
                 />
                 <Tab.Screen
                     name="Filtro Automatizado"
-                    component={FiltroAutomatizado1}
+                    component={FiltroAutomatizadoStack}
                     options = {{
                         tabBarIcon: ({color,size}) => (
                             <FontAwesome name="cogs" size={30} color={color} />
@@ -102,7 +171,7 @@ function MyTabs() {
                 />
                 <Tab.Screen
                     name="Publicar"
-                    component={Publicar1}
+                    component={PublicarStack}
                     options = {{
                         tabBarIcon: ({color,size}) => (
                             <Entypo name="plus" size={35} color={color} />
@@ -111,7 +180,7 @@ function MyTabs() {
                 />
                 <Tab.Screen
                     name="Usuario"
-                    component={Usuario1}
+                    component={UsuarioStack}
                     options = {{
                         tabBarIcon: ({color,size}) => (
                             <AntDesign name="user" size={30} color={color} />
