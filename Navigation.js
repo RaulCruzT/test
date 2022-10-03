@@ -54,7 +54,7 @@ function FiltroManualStack() {
                 component={FiltroManual4}
             />
             <FiltroManualStackNavigator.Screen
-                name="Filtro Manual Resultado"
+                name="Filtro Manual Resultado 1"
                 options={{ title: 'Filtro Manual', headerTintColor: "#fff", headerBackTitleVisible: false }}
                 component={FiltroManualResultado1}
             />

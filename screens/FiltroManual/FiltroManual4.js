@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, StatusBar, ImageBackground, Pressable, Button, Platform } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, StatusBar, ImageBackground, Pressable, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Dropdown } from 'react-native-element-dropdown';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -7,14 +7,12 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 // fondo
 import image from '../../assets/images/background.png';
 
-//icons
-import { FontAwesome } from '@expo/vector-icons';
-
 //data
 import { razasGato } from '../../data/razas-gato';
 import { razasPerro } from '../../data/razas-perro';
 import { regiones } from '../../data/regiones';
 import { comunas } from '../../data/comunas';
+import { comunasTotal } from '../../data/comunasTotal';
 
 //state
 import { useGlobalState } from '../../providers/hookstateProvider';
@@ -31,6 +29,14 @@ const FiltroManual4 = () => {
         const currentDate = selectedDate || state.getFecha();
         setShow(false);
         state.setFecha(new Date(currentDate));
+    }
+
+    const dateFormat = () => {
+        let selectedDate = state.getFecha();
+        let date = selectedDate.getDate().toString();
+        let month = (selectedDate.getMonth() + 1).toString();
+        let year = selectedDate.getFullYear().toString();
+        return date + '/' + month + '/' + year;
     }
 
     if(state.getTipoMascota() == "Perro"){
@@ -113,7 +119,24 @@ const FiltroManual4 = () => {
                             state.setComuna(item.value);
                             }}
                         />
-                        : undefined
+                        :
+                        <Dropdown
+                            style={styles.dropdown}
+                            placeholderStyle={styles.placeholderStyle}
+                            selectedTextStyle={styles.selectedTextStyle}
+                            inputSearchStyle={styles.inputSearchStyle}
+                            data={comunasTotal}
+                            search
+                            maxHeight={300}
+                            labelField="label"
+                            valueField="value"
+                            placeholder="Seleccione una comuna"
+                            searchPlaceholder="Escriba una comuna"
+                            value={state.getComuna()}
+                            onChange={item => {
+                            state.setComuna(item.value);
+                            }}
+                        />
                     }
                 </View>
                 <View style={[styles.mid, {zIndex: 2}]}>
@@ -123,7 +146,7 @@ const FiltroManual4 = () => {
                         <Text style={[styles.title, {marginBottom:15}]}>Fecha de encuentro</Text>
                     }
                     <View style={{minWidth:"100%", alignItems:'center'}}>
-                    <Button title='Seleccionar' onPress={() => setShow(true)} />
+                    <Button title={dateFormat()} onPress={() => setShow(true)} />
                     {
                         show &&
                         <DateTimePicker
@@ -135,11 +158,12 @@ const FiltroManual4 = () => {
                             onChange={onChange}
                             boxStyles={{backgroundColor:"#000"}}
                             style={{flex:0, width:120, color: "#fff"}}
+                            maximumDate={new Date()}
                         />
                     }
                     </View>
                 </View>
-                <Pressable style={[styles.button2, {backgroundColor:"#ff6600"}]} onPress={() => navigation.navigate('Filtro Automatizado')}>
+                <Pressable style={[styles.button2, {backgroundColor:"#ff6600"}]} onPress={() => navigation.navigate('Filtro Manual Resultado 1')}>
                     <Text style={styles.text2}>Filtrar</Text>
                 </Pressable>
             </ImageBackground>
