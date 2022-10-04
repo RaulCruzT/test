@@ -7,7 +7,7 @@ const initialState = createState({
     tipoBusqueda: null,
     tipoMascota: null,
     sexo: null,
-    tamano: null,
+    color: null,
     edadAparente: null,
     raza: null,
     region: null,
@@ -21,7 +21,7 @@ export const useGlobalState = () => {
         getTipoBusqueda: () => state.tipoBusqueda.value,
         getTipoMascota: () => state.tipoMascota.value,
         getSexo: () => state.sexo.value,
-        getTamano: () => state.tamano.value,
+        getColor: () => state.color.value,
         getEdadAparente: () => state.edadAparente.value,
         getRaza: () => state.raza.value,
         getRegion: () => state.region.value,
@@ -36,8 +36,8 @@ export const useGlobalState = () => {
         setSexo: (sex) => {
             state.sexo.set(sex);
         },
-        setTamano: (tamano) => {
-            state.tamano.set(tamano);
+        setColor: (color) => {
+            state.color.set(color);
         },
         setEdadAparente: (edad) => {
             state.edadAparente.set(edad);

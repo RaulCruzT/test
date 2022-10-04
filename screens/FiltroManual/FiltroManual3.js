@@ -1,8 +1,12 @@
 import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, StatusBar, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Dropdown } from 'react-native-element-dropdown';
 
 // fondo
 import image from '../../assets/images/background.png';
+
+// data
+import { colores } from '../../data/colores';
 
 //icons
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -24,59 +28,6 @@ const FiltroManual3 = () => {
             />
             <ImageBackground source={image} resizeMode="stretch" imageStyle={styles.image} style={{flex:1}}>
                 <View style={styles.top}>
-                    <Text style={styles.title}>Tamaño</Text>
-                </View>
-                <View style={styles.bottom}>
-                    <View style={styles.column}>
-                        <View style={styles.columnLeft}>
-                            {
-                                (state.getTamano() == "Pequeño") 
-                                ? 
-                                    <TouchableOpacity style={styles.buttonClickeado} onPress={() => state.setTamano("")}>
-                                        <Entypo name="dot-single" size={70} color="#FF6600" />
-                                    </TouchableOpacity>
-                                :
-                                    <TouchableOpacity style={styles.button} onPress={() => state.setTamano("Pequeño")}>
-                                        <Entypo name="dot-single" size={70} color="#FF6600" />
-                                    </TouchableOpacity>
-                            }
-                            <Text style={{fontSize: 16, marginTop: 8}}>Pequeño</Text>
-                        </View>
-                    </View>
-                    <View style={styles.column}>
-                        <View style={styles.columnCentral}>
-                            {
-                                (state.getTamano() == "Mediano") 
-                                ? 
-                                    <TouchableOpacity style={styles.buttonClickeado} onPress={() => state.setTamano("")}>
-                                        <Entypo name="dots-two-horizontal" size={70} color="#FF6600" />
-                                    </TouchableOpacity>
-                                :
-                                    <TouchableOpacity style={styles.button} onPress={() => state.setTamano("Mediano")}>
-                                        <Entypo name="dots-two-horizontal" size={70} color="#FF6600" />
-                                    </TouchableOpacity>
-                            }
-                            <Text style={{fontSize: 16, marginTop: 8}}>Mediano</Text>
-                        </View>
-                    </View>                
-                    <View style={styles.column}>
-                        <View style={styles.columnRight}>
-                            {
-                                (state.getTamano() == "Grande") 
-                                ? 
-                                    <TouchableOpacity style={styles.buttonClickeado} onPress={() => state.setTamano("")}>
-                                        <Entypo name="dots-three-horizontal" size={70} color="#FF6600" />
-                                    </TouchableOpacity>
-                                :
-                                    <TouchableOpacity style={styles.button} onPress={() => state.setTamano("Grande")}>
-                                        <Entypo name="dots-three-horizontal" size={70} color="#FF6600" />
-                                    </TouchableOpacity>
-                            }
-                            <Text style={{fontSize: 16, marginTop: 8}}>Grande</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.mid}>
                     <Text style={styles.title}>Edad aparente</Text>
                 </View>
                 <View style={styles.bottom}>
@@ -129,6 +80,28 @@ const FiltroManual3 = () => {
                         </View>
                     </View>
                 </View>
+                <View style={styles.mid}>
+                    <Text style={styles.title}>Color dominante</Text>
+                </View>
+                <View style={styles.bottom2}>
+                    <Dropdown
+                            style={styles.dropdown}
+                            placeholderStyle={styles.placeholderStyle}
+                            selectedTextStyle={styles.selectedTextStyle}
+                            inputSearchStyle={styles.inputSearchStyle}
+                            data={colores}
+                            search
+                            maxHeight={300}
+                            labelField="label"
+                            valueField="value"
+                            placeholder='Seleccione un color'
+                            searchPlaceholder="Escriba un color"
+                            value={state.getColor()}
+                            onChange={item => {
+                                state.setColor(item.value);
+                            }}
+                    />
+                </View>
             </ImageBackground>
             <TouchableOpacity style={styles.bottomArrow} onPress={() => navigation.navigate('Filtro Manual 4')}>
                 <AntDesign name="arrowright" size={40} color="#36A0AD" />
@@ -151,7 +124,6 @@ const styles = StyleSheet.create({
         flex:0.8,
         paddingTop: '17%',
         height: '25%',
-        display: 'flex',
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
         paddingBottom: '7%',
@@ -175,6 +147,9 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent: 'flex-start',
         marginHorizontal: "5%"
+    },
+    bottom2: {
+        flex: 1,
     },
     column: {
         width: '33%',
@@ -242,7 +217,32 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         paddingLeft: "85%"
-    }
+    },
+    dropdown: {
+        margin: 16,
+        height: 50,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 12,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        elevation: 2,
+    },
+    placeholderStyle: {
+        fontSize: 16,
+    },
+    selectedTextStyle: {
+        fontSize: 16,
+    },
+    inputSearchStyle: {
+        height: 40,
+        fontSize: 16,
+    },
 });
 
 export default FiltroManual3;
