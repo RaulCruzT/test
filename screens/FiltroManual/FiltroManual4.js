@@ -51,7 +51,7 @@ const FiltroManual4 = () => {
                 barStyle="light-content"
             />
             <ImageBackground source={image} resizeMode="stretch" imageStyle={styles.image} style={{flex:1}}>
-                <View style={[styles.top, {zIndex: 6}]}>
+                <View style={styles.top}>
                     <Text style={[styles.title]}>Tendencia de raza</Text>
                     <Dropdown
                         style={styles.dropdown}
@@ -71,7 +71,7 @@ const FiltroManual4 = () => {
                         }}
                     />
                 </View>
-                <View style={[styles.mid, {zIndex: 4}]}>
+                <View style={styles.mid}>
                     {
                         state.getTipoBusqueda() === "Mascota" ?
                         <Text style={[styles.title]}>Región en que se perdió</Text> :
@@ -95,7 +95,7 @@ const FiltroManual4 = () => {
                         }}
                     />
                 </View>
-                <View style={[styles.mid, {zIndex: 3}]}>
+                <View style={styles.mid}>
                     {
                         state.getTipoBusqueda() === "Mascota" ?
                         <Text style={[styles.title]}>Comuna en que se perdió</Text> :

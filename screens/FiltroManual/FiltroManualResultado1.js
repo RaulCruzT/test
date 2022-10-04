@@ -185,7 +185,7 @@ const FiltroManualResultado1 = () => {
 
     const getData=()=>{
 
-        fetch('http://192.168.43.94:8000/api/samfind/posts', {
+        fetch('http://192.168.0.13:8000/api/samfind/posts', {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(dataJSON), // data can be `string` or {object}!
             headers:{
