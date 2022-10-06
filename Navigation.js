@@ -10,6 +10,8 @@ import FiltroManual3 from "./screens/FiltroManual/FiltroManual3";
 import FiltroManual4 from "./screens/FiltroManual/FiltroManual4";
 import FiltroManualResultado1 from "./screens/FiltroManual/FiltroManualResultado1";
 import FiltroAutomatizado1 from "./screens/FiltroAutomatizado/FiltroAutomatizado1";
+import FiltroAutomatizado2 from "./screens/FiltroAutomatizado/FiltroAutomatizado2";
+import FiltroAutomatizado3 from "./screens/FiltroAutomatizado/FiltroAutomatizado3";
 import Publicar1 from "./screens/Publicar/Publicar1";
 import Usuario1 from "./screens/Usuario/Usuario1";
 
@@ -80,6 +82,16 @@ function FiltroAutomatizadoStack() {
                 name="Filtro Automatizado 1"
                 options={{ title: 'Filtro Automatizado' }}
                 component={FiltroAutomatizado1}
+            />
+            <FiltroAutomatizadoStackNavigator.Screen
+                name="Filtro Automatizado 2"
+                options={{ title: 'Filtro Automatizado' }}
+                component={FiltroAutomatizado2}
+            />
+            <FiltroAutomatizadoStackNavigator.Screen
+                name="Filtro Automatizado 3"
+                options={{ title: 'Filtro Automatizado' }}
+                component={FiltroAutomatizado3}
             />
         </FiltroAutomatizadoStackNavigator.Navigator>
     );

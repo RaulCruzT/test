@@ -13,6 +13,7 @@ const initialState = createState({
     region: null,
     comuna: null,
     fecha: d,
+    imagen: null,
 });
 
 export const useGlobalState = () => {
@@ -27,6 +28,7 @@ export const useGlobalState = () => {
         getRegion: () => state.region.value,
         getComuna: () => state.comuna.value,
         getFecha: () => state.fecha.value,
+        getImagen: () => state.imagen.value,
         setTipoBusqueda: (tipo) => {
             state.tipoBusqueda.set(tipo);
         },
@@ -53,6 +55,9 @@ export const useGlobalState = () => {
         },
         setFecha: (fecha) => {
             state.fecha.set(fecha);
+        },
+        setImagen: (imagen) => {
+            state.imagen.set(imagen);
         }
     }
 }
